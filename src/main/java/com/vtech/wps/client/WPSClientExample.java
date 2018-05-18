@@ -8,8 +8,11 @@ import org.n52.wps.client.ExecuteRequestBuilder;
 import org.n52.wps.client.ExecuteResponseAnalyser;
 import org.n52.wps.client.WPSClientException;
 import org.n52.wps.client.WPSClientSession;
+import org.n52.wps.commons.WPSConfig;
 import org.n52.wps.io.data.IData;
 import org.n52.wps.io.data.binding.complex.GTVectorDataBinding;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,6 +24,60 @@ import java.util.HashMap;
  * @date 2018 /5/12 21:06
  */
 public class WPSClientExample {
+    private static final Logger log = LoggerFactory.getLogger(WPSClientExample.class);
+
+    public static void main(String[] args) {
+        //启动tomcat服务之后，测试服务
+        WPSClientExample wps = new WPSClientExample();
+        wps.testExecute();
+    }
+
+    public void testExecute() {
+        String path = this.getClass().getResource("/").getPath();
+
+        WPSConfig.getInstance(path + "config/wps_config_geotools.xml");
+
+        String wpsURL = "http://localhost:8080/wps/WebProcessingService";
+        // ows:Identifier
+        String processID = "org.n52.wps.server.algorithm.SimpleBufferAlgorithm";
+
+        /*try {
+            ProcessDescriptionType describeProcessDocument = requestDescribeProcess(
+                    wpsURL, processID);
+            System.out.println(describeProcessDocument);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        try {
+            CapabilitiesDocument capabilitiesDocument = requestCapabilities(wpsURL);
+            ProcessDescriptionType describeProcessDocument = requestDescribeProcess(
+                    wpsURL, processID);
+            // define inputs
+            HashMap<String, Object> inputs = new HashMap<String, Object>();
+            // complex data by reference
+            inputs.put(
+                    "data",
+                    "http://geoprocessing.demo.52north.org:8080/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=topp:tasmania_roads&outputFormat=GML3");
+            // literal data
+            inputs.put("width", "0.05");
+            // 执行并获得结果
+            IData data = executeProcess(wpsURL, processID,
+                                        describeProcessDocument, inputs);
+
+            if (data instanceof GTVectorDataBinding) {
+                FeatureCollection featureCollection = ((GTVectorDataBinding) data)
+                        .getPayload();
+                System.out.println(featureCollection.size());
+            }
+        } catch (WPSClientException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Request a WPS Capabilities document
@@ -47,7 +104,7 @@ public class WPSClientExample {
     }
 
     /**
-     * Request a WPS DescribeProcess document.
+     * 请求 WPS DescribeProcess 文档.
      *
      * @return the process description type
      */

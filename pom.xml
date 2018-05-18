@@ -7,6 +7,7 @@
   <groupId>com.vtech</groupId>
   <artifactId>wps-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <name>wps-demo</name>
   <!-- FIXME change it to the project's website -->
@@ -37,29 +38,30 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>${slf4j.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>log4j-over-slf4j</artifactId>
       <version>${slf4j.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jul-to-slf4j</artifactId>
       <version>${slf4j.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
       <version>${slf4j.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.n52.wps</groupId>
       <artifactId>52n-wps-io</artifactId>
+      <version>${n52-wps.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.n52.wps</groupId>
+      <artifactId>52n-wps-server</artifactId>
       <version>${n52-wps.version}</version>
     </dependency>
     <dependency>
@@ -78,6 +80,15 @@
       <artifactId>52n-wps-client-lib</artifactId>
       <version>${n52-wps.version}</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
