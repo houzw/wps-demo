@@ -1,3 +1,11 @@
+单纯测试发布，不需要安装taudem
+
+ 一般需要geotools扩展 （版本也可以是 3.6.3）
+ [WPS 3.6.2 GeoTools package](https://52north.org/delivery/releases/wps/3.6.2/wps-3.6.2-geotools-package.zip)
+ 
+还需要相应的依赖库 
+https://github.com/lreis2415/egc-commons
+
 
 
 [52°North WPS GitHub](https://github.com/52North/WPS)

@@ -11,6 +11,7 @@ import java.io.IOException;
  * @author houzhiwei
  * @date 2018/5/22 9:32
  */
+@Deprecated
 public class ExecCommandLine {
 
     public static void run(String command) throws IOException {

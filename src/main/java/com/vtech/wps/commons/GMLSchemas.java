@@ -1,5 +1,7 @@
 package com.vtech.wps.commons;
 
+import lombok.Getter;
+
 /**
  * http://schemas.opengis.net/gml/3.1.1/base/
  *
@@ -7,35 +9,55 @@ package com.vtech.wps.commons;
  * @version 3.1.1
  * @date 2018/5/12 21:54
  */
+@Getter
 public class GMLSchemas {
 
-    public static final String FEATURE = "http://schemas.opengis.net/gml/3.1.1/base/feature.xsd";
-    public static final String BASIC_TYPES = "http://schemas.opengis.net/gml/3.1.1/base/basicTypes.xsd";
-    public static final String COORDINATE_OPERATIONS = "http://schemas.opengis.net/gml/3.1.1/base/coordinateOperations.xsd";
-    public static final String COORDINATE_REFERENCE_SYSTEMS = "http://schemas.opengis.net/gml/3.1.1/base/coordinateReferenceSystems.xsd";
-    public static final String COORDINATE_SYSTEMS = "http://schemas.opengis.net/gml/3.1.1/base/coordinateSystems.xsd";
-    public static final String COVERAGE = "http://schemas.opengis.net/gml/3.1.1/base/coverage.xsd";
-    public static final String DATA_QUALITY = "http://schemas.opengis.net/gml/3.1.1/base/dataQuality.xsd";
-    public static final String DATUMS = "http://schemas.opengis.net/gml/3.1.1/base/datums.xsd";
-    public static final String DEFAULT_STYLE = "http://schemas.opengis.net/gml/3.1.1/base/defaultStyle.xsd";
-    public static final String DICTIONARY = "http://schemas.opengis.net/gml/3.1.1/base/dictionary.xsd";
-    public static final String DIRECTION = "http://schemas.opengis.net/gml/3.1.1/base/direction.xsd";
-    public static final String DYNAMIC_FEATURE = "http://schemas.opengis.net/gml/3.1.1/base/dynamicFeature.xsd";
-    public static final String GEOMETRY_AGGREGATES = "http://schemas.opengis.net/gml/3.1.1/base/geometryAggregates.xsd";
-    public static final String GEOMETRY_BASIC_0D1D = "http://schemas.opengis.net/gml/3.1.1/base/geometryBasic0d1d.xsd";
-    public static final String GEOMETRY_BASIC_2D = "http://schemas.opengis.net/gml/3.1.1/base/geometryBasic2d.xsd";
-    public static final String GEOMETRY_COMPLEXES = "http://schemas.opengis.net/gml/3.1.1/base/geometryComplexes.xsd";
-    public static final String GEOMETRY_PRIMITIVES = "http://schemas.opengis.net/gml/3.1.1/base/geometryPrimitives.xsd";
-    public static final String GML = "http://schemas.opengis.net/gml/3.1.1/base/gml.xsd";
-    public static final String GML_BASE = "http://schemas.opengis.net/gml/3.1.1/base/gmlBase.xsd";
-    public static final String GRIDS = "http://schemas.opengis.net/gml/3.1.1/base/grids.xsd";
-    public static final String MEASURES = "http://schemas.opengis.net/gml/3.1.1/base/measures.xsd";
-    public static final String OBSERVATION = "http://schemas.opengis.net/gml/3.1.1/base/observation.xsd";
-    public static final String REFERENCE_SYSTEMS = "http://schemas.opengis.net/gml/3.1.1/base/referenceSystems.xsd";
-    public static final String TEMPORAL = "http://schemas.opengis.net/gml/3.1.1/base/temporal.xsd";
-    public static final String TEMPORAL_REFERENCE_SYSTEMS = "http://schemas.opengis.net/gml/3.1.1/base/temporalReferenceSystems.xsd";
-    public static final String TEMPORAL_TOPOLOGY = "http://schemas.opengis.net/gml/3.1.1/base/temporalTopology.xsd";
-    public static final String TOPOLOGY = "http://schemas.opengis.net/gml/3.1.1/base/topology.xsd";
-    public static final String UNITS = "http://schemas.opengis.net/gml/3.1.1/base/units.xsd";
-    public static final String VALUE_OBJECTS = "http://schemas.opengis.net/gml/3.1.1/base/valueObjects.xsd";
+    public GMLSchemas() {}
+
+    /**
+     * GMLSchemas
+     *
+     * @param version version of schema, default is 3.1.1
+     */
+    public GMLSchemas(String version) {this.version = version;}
+
+    private String version = "3.1.1";
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String setVersion(String version) {
+        return this.version = version;
+    }
+
+    public String feature = "http://schemas.opengis.net/gml/" + version + "/base/feature.xsd";
+    public String basicTypes = "http://schemas.opengis.net/gml/" + version + "/base/basicTypes.xsd";
+    public String coordinateOperations = "http://schemas.opengis.net/gml/" + version + "/base/coordinateOperations.xsd";
+    public String coordinateReferenceSystems = "http://schemas.opengis.net/gml/" + version + "/base/coordinateReferenceSystems.xsd";
+    public String coordinateSystems = "http://schemas.opengis.net/gml/" + version + "/base/coordinateSystems.xsd";
+    public String coverage = "http://schemas.opengis.net/gml/" + version + "/base/coverage.xsd";
+    public String dataQuality = "http://schemas.opengis.net/gml/" + version + "/base/dataQuality.xsd";
+    public String datums = "http://schemas.opengis.net/gml/" + version + "/base/datums.xsd";
+    public String defaultStyle = "http://schemas.opengis.net/gml/" + version + "/base/defaultStyle.xsd";
+    public String dictionary = "http://schemas.opengis.net/gml/" + version + "/base/dictionary.xsd";
+    public String direction = "http://schemas.opengis.net/gml/" + version + "/base/direction.xsd";
+    public String dynamicFeature = "http://schemas.opengis.net/gml/" + version + "/base/dynamicFeature.xsd";
+    public String geometryAggregates = "http://schemas.opengis.net/gml/" + version + "/base/geometryAggregates.xsd";
+    public String geometryBasic0d1d = "http://schemas.opengis.net/gml/" + version + "/base/geometryBasic0d1d.xsd";
+    public String geometryBasic2d = "http://schemas.opengis.net/gml/" + version + "/base/geometryBasic2d.xsd";
+    public String geometryComplexes = "http://schemas.opengis.net/gml/" + version + "/base/geometryComplexes.xsd";
+    public String geometryPrimitives = "http://schemas.opengis.net/gml/" + version + "/base/geometryPrimitives.xsd";
+    public String gml = "http://schemas.opengis.net/gml/" + version + "/base/gml.xsd";
+    public String gmlBase = "http://schemas.opengis.net/gml/" + version + "/base/gmlBase.xsd";
+    public String grids = "http://schemas.opengis.net/gml/" + version + "/base/grids.xsd";
+    public String measures = "http://schemas.opengis.net/gml/" + version + "/base/measures.xsd";
+    public String observation = "http://schemas.opengis.net/gml/" + version + "/base/observation.xsd";
+    public String referenceSystems = "http://schemas.opengis.net/gml/" + version + "/base/referenceSystems.xsd";
+    public String temporal = "http://schemas.opengis.net/gml/" + version + "/base/temporal.xsd";
+    public String temporalReference_systems = "http://schemas.opengis.net/gml/" + version + "/base/temporalReferenceSystems.xsd";
+    public String temporalTopology = "http://schemas.opengis.net/gml/" + version + "/base/temporalTopology.xsd";
+    public String topology = "http://schemas.opengis.net/gml/" + version + "/base/topology.xsd";
+    public String units = "http://schemas.opengis.net/gml/" + version + "/base/units.xsd";
+    public String valueObjects = "http://schemas.opengis.net/gml/" + version + "/base/valueObjects.xsd";
 }

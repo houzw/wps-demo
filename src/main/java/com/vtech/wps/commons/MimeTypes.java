@@ -14,6 +14,7 @@ public class MimeTypes {
     public static final String GEOTIFF = "image/geotiff";
     public static final String PDF = "application/pdf";
     public static final String ZIP = "application/zip";
+    public static final String JSON = "application/json";
 
     public static final String TEXT = "text/plain";
     public static final String HTML = "text/html";
@@ -37,4 +38,36 @@ public class MimeTypes {
     public static final String APP_DBASE = "application/dbase";
     public static final String APP_REMAP = "application/remap";
     public static final String APP_DGN = "application/dgn";
+
+    /**
+     * get Suffix From MIMEType
+     * {@link org.n52.wps.commons.MIMEUtil#getSuffixFromMIMEType(String)}
+     *
+     * @param mimeType
+     * @return Suffix
+     */
+    public static String getSuffixFromMIMEType(String mimeType) {
+        String[] mimeTypeSplit = mimeType.split("/");
+        String suffix = mimeTypeSplit[mimeTypeSplit.length - 1];
+        if ("geotiff".equalsIgnoreCase(suffix)
+                || "x-geotiff".equalsIgnoreCase(suffix)) {
+            suffix = "tiff";
+        } else if ("netcdf".equalsIgnoreCase(suffix)
+                || "x-netcdf".equalsIgnoreCase(suffix)) {
+            suffix = "nc";
+        } else if ("x-zipped-shp".equalsIgnoreCase(suffix)) {
+            suffix = "zip";
+        } else if ("text/plain".equals(mimeType)) {
+            suffix = "txt";
+        } else if ("text/html".equals(mimeType)) {
+            suffix = "html";
+        } else if ("application/json".equals(mimeType)) {
+            suffix = "json";
+        } else if ("text/csv".equals(mimeType)) {
+            suffix = "csv";
+        } else if (mimeType.contains("rData")) {
+            suffix = "rData";
+        }
+        return suffix;
+    }
 }
